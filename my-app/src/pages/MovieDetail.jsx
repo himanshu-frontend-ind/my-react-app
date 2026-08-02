@@ -20,8 +20,8 @@ function MovieDetail() {
 
   return (
     <div className="movie-detail">
-        <h2>{movies.Title}</h2>
 		<img alt={movies.Title} src={movies.Poster} />
+        <h2>{movies.Title}</h2>
 		<p><strong>Genre:</strong> {movies.Genre}</p>
 		<p><strong>Released:</strong> {movies.Released}</p>
 		<p><strong>Plot:</strong> {movies.Plot}</p>
