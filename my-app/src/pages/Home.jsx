@@ -22,7 +22,12 @@ function Home() {
      const handleSearch = (e)=>{
         e.preventDefault()
         const query = inputRef.current.value.trim()
-        if(query) return fetchMovie(query)
+        if(query) {
+           
+            fetchMovie(query)
+           inputRef.current.value = ""
+      }
+         
      }
   return (
     <div className="home">
