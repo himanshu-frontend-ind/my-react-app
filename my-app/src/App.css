@@ -46,6 +46,8 @@ body {
 		border-radius: 8px;
 		width: 200px;
 		text-align: center;
+		text-decoration: none;
+		color: white;
 	}
 
 	.movie-card img {
