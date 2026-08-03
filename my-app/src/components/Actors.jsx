@@ -90,7 +90,7 @@ function Actors() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button type="submit">🔎 Search</button>
+        <button className="btn" type="submit">🔎 Search</button>
       </form>
 
       {loading && <p>Loading actors...</p>}
