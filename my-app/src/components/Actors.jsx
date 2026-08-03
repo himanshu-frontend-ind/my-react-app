@@ -82,7 +82,7 @@ function Actors() {
   const selectedMovies = selectedActor ? actorIndex[selectedActor] || [] : []
 
   return (
-    <div className="actors-page">
+    <div className="home">
       <form className="actor-search-form" onSubmit={handleSearchSubmit}>
         <input
           className="searchInput"
@@ -90,7 +90,7 @@ function Actors() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button type="submit">Search 🔎</button>
+        <button type="submit">🔎 Search</button>
       </form>
 
       {loading && <p>Loading actors...</p>}
