@@ -73,7 +73,7 @@ function Home() {
     <div className="home">
       <form onSubmit={handleSearch}>
         <input ref={inputRef} className="searchInput" placeholder="Search for a movie..." />
-        <button type="submit">🔎 Search</button>
+        <button className="btn" type="submit">🔎 Search</button>
       </form>
 
       {loading ? <p>Loading...</p> : <MovieList movies={movies} />}
