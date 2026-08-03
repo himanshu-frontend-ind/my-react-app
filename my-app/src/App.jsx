@@ -4,12 +4,13 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import MovieDetail from './pages/MovieDetail'
+import Actors from './components/Actors'
 
 function AppRoutes(){
-  const location = useLocation()
   return(
     <Routes>
-        <Route path='/' element={<Home key={location.key}/>}/>
+        <Route path='/' element={<Home />}/>
+        <Route path="/actors" element={<Actors />} />
         <Route path='/movie/:id' element={<MovieDetail/>}/>
       </Routes>
   )
