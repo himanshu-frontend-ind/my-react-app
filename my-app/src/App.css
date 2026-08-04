@@ -93,6 +93,10 @@ body {
 
 /* Mobile Screens ke liye (Max width 768px ya usse kam) */
 @media (max-width: 768px) {
+  .navbar h2{
+    font-size: 16px;
+  }
+
   .btn {
     width: 26%;
     font-size: 16px;
@@ -406,15 +410,16 @@ body {
 }
 
 .actor-section-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #f9fafb;
-  margin: 0 0 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #23262f;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #f9fafb;
+    margin: 0 0 1.5rem;
+    padding-top: 1.4rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid #23262f;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 /* Grid instead of plain flex-wrap — keeps chips evenly sized on any screen */
@@ -442,6 +447,7 @@ body {
   border-radius: 14px;
   padding: 10px 14px;
   font-size: 13px;
+  text-decoration: none;
   font-weight: 600;
   text-align: left;
   cursor: pointer;
@@ -498,4 +504,68 @@ body {
     padding: 8px 10px;
     font-size: 12px;
   }
+}
+
+
+
+/* ==========================================================================
+   Skeleton Loading Card
+   ========================================================================== */
+.skeleton-card {
+  background: #14161d;
+  border: 1px solid #23262f;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.skeleton-poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background: linear-gradient(90deg, #1a1d26 25%, #23262f 37%, #1a1d26 63%);
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
+}
+
+.skeleton-line {
+  height: 12px;
+  margin: 0.85rem 0.9rem 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #1a1d26 25%, #23262f 37%, #1a1d26 63%);
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
+}
+
+.skeleton-title {
+  width: 80%;
+}
+
+.skeleton-year {
+  width: 40%;
+  margin: 0.5rem 0.9rem 0.9rem;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.skeleton-detail-wrap {
+  width: 100%;
+  max-width: 800px;
+}
+
+.skeleton-detail-wrap .skeleton-card {
+  width: 100%;
+}
+
+.skeleton-detail-wrap .skeleton-poster {
+  aspect-ratio: unset;
+  height: 450px;
 }
