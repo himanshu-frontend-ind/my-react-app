@@ -4,7 +4,7 @@ function Navbar() {
   return (
      <nav className="navbar">
           
-                <h2>🎬 Movie Explorer</h2>
+                <h2>FLICKOLOGY</h2>
             
             <Link to="/">Home</Link>
             <Link to="/actors">Actors</Link>
