@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import MovieList from "./MovieList"
 import ActorList from "./ActorList"
+import SkeletonList from "./SkeletonList"
 
 const API_KEY = "b875e73f"
 const SEED_QUERIES = ["Avengers", "Batman", "Harry Potter", "Mission Impossible", "Fast"]
@@ -21,7 +21,6 @@ function Actors() {
   const [actorIndex, setActorIndex] = useState(loadActorIndex)
   const [loading, setLoading] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
-  const [selectedActor, setSelectedActor] = useState(null)
 
   const fetchMovieDetails = async (imdbID) => {
     const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&i=${imdbID}`)
@@ -44,8 +43,6 @@ function Actors() {
     })
   }
 
-  // Agar actor list khaali hai (pehli baar page khula hai), to kuch popular
-  // movies fetch karke actor list build kar lo
   const seedActors = async () => {
     setLoading(true)
     for (const query of SEED_QUERIES) {
@@ -67,19 +64,11 @@ function Actors() {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault()
-    // search box neeche actor list ko turant filter kar deta hai (onChange se),
-    // submit button sirf form ke liye hai
-  }
-
-  const handleActorClick = (actorName) => {
-    setSelectedActor(actorName)
   }
 
   const sortedActors = Object.keys(actorIndex)
     .filter((actor) => actor.toLowerCase().includes(searchTerm.toLowerCase()))
     .sort((a, b) => a.localeCompare(b))
-
-  const selectedMovies = selectedActor ? actorIndex[selectedActor] || [] : []
 
   return (
     <div className="home">
@@ -93,16 +82,9 @@ function Actors() {
         <button className="btn" type="submit">🔎 Search</button>
       </form>
 
-      {loading && <p>Loading actors...</p>}
+      {loading && <SkeletonList count={10} />}
 
-      <ActorList actors={sortedActors} onActorClick={handleActorClick} />
-
-      {selectedActor && (
-        <div className="actor-section">
-          <h2 className="actor-section-title">🎬 Movies of {selectedActor}</h2>
-          <MovieList movies={selectedMovies} />
-        </div>
-      )}
+      <ActorList actors={sortedActors} />
     </div>
   )
 }

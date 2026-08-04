@@ -1,4 +1,6 @@
-function ActorList({ actors, onActorClick }) {
+import { Link } from "react-router-dom"
+
+function ActorList({ actors }) {
   if (!actors.length) return null
 
   return (
@@ -6,15 +8,14 @@ function ActorList({ actors, onActorClick }) {
       <h2 className="actor-section-title">🎭 Actors & Actresses</h2>
       <div className="actor-list">
         {actors.map((actor) => (
-          <button
+          <Link
             key={actor}
-            type="button"
+            to={`/actor/${encodeURIComponent(actor)}`}
             className="actor-chip"
             data-initial={actor.charAt(0)}
-            onClick={() => onActorClick(actor)}
           >
             {actor}
-          </button>
+          </Link>
         ))}
       </div>
     </div>
