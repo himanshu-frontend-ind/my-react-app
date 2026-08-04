@@ -1,22 +1,34 @@
 import { useState,useEffect } from "react"
 import { useParams } from "react-router-dom"
+import SkeletonCard from "../components/SkeletonCard"
 
 function MovieDetail() {
     const {id} = useParams()
-    const [movies, setmovies] = useState([])
+    const [movies, setmovies] = useState(null)
+    const [loading, setLoading] = useState(true)
 
    const getMovie = async () => {
+            setLoading(true)
             const res = await fetch(`https://www.omdbapi.com/?apikey=b875e73f&i=${id}`)
             const data = await res.json()
             setmovies(data)
-            // console.log(data)
+            setLoading(false)
    }
 
     useEffect(()=>{
          getMovie() 
     },[id])
 
-    if(!movies) return <p>LOADING</p> 
+    if(loading || !movies) {
+  return (
+    <div className="movie-card-wrapper">
+      <div className="skeleton-detail-wrap">
+        <SkeletonCard />
+      </div>
+    </div>
+  )
+}
+    
 
   return (
     <div className="movie-card-wrapper">

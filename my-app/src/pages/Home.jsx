@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import MovieList from "../components/MovieList"
+import SkeletonList from "../components/SkeletonList"
 
 const API_KEY = "b875e73f"
 
@@ -17,7 +18,7 @@ function saveActorIndex(index) {
 
 function Home() {
   const [movies, setmovies] = useState([])
-  const [loading, setloading] = useState(false)
+  const [loading, setloading] = useState(true)
   const [actorIndex, setActorIndex] = useState(loadActorIndex)
   const inputRef = useRef()
 
@@ -76,7 +77,7 @@ function Home() {
         <button className="btn" type="submit">🔎 Search</button>
       </form>
 
-      {loading ? <p>Loading...</p> : <MovieList movies={movies} />}
+      {loading ? <SkeletonList count={10} /> : <MovieList movies={movies} />}
     </div>
   )
 }
